@@ -1,0 +1,2 @@
+class FeelsController < ApplicationController
+end

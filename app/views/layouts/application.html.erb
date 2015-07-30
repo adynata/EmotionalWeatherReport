@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EWR</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="container">
+    <div id="user_nav">
+      <%= link_to "Sign in with Twitter", auth/twitter %>
+    </div>
+  </div>
+<%= yield %>
+
+</body>
+</html>
