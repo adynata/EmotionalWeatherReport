@@ -7,6 +7,9 @@
 #  location   :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  email      :string
+#  fname      :string
+#  lname      :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

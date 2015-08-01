@@ -1,20 +1,18 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: authorizations
 #
 #  id         :integer          not null, primary key
-#  username   :string           not null
-#  location   :string           not null
+#  provider   :string
+#  uid        :string
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  email      :string
-#  fname      :string
-#  lname      :string
 #
 
 require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase
+class AuthorizationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

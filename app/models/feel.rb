@@ -12,6 +12,12 @@
 class Feel < ActiveRecord::Base
   validates :user, :feel, presence: true
   belongs_to :user
+  has_many :connections
+  has_many(
+    :friends,
+    through: :connections,
+    source: :users
+    )
 
 
   def self.feels_tree

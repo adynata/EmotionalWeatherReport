@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: authorizations
+#
+#  id         :integer          not null, primary key
+#  provider   :string
+#  uid        :string
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: MyString
+  uid: MyString
+  user_id: 1
+
+two:
+  provider: MyString
+  uid: MyString
+  user_id: 1
