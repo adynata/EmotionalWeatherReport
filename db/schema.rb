@@ -31,13 +31,18 @@ ActiveRecord::Schema.define(version: 20150730214738) do
   add_index "feels", ["user_id"], name: "index_feels_on_user_id"
 
   create_table "forecasts", force: :cascade do |t|
-    t.string   "location",   null: false
-    t.date     "date",       null: false
-    t.time     "sunrise",    null: false
-    t.time     "sunset",     null: false
-    t.string   "conditions", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "location",        null: false
+    t.date     "date",            null: false
+    t.time     "sunrise",         null: false
+    t.time     "sunset",          null: false
+    t.string   "conditions",      null: false
+    t.string   "conditions_desc", null: false
+    t.string   "current_temp",    null: false
+    t.string   "low_temp",        null: false
+    t.string   "high_temp",       null: false
+    t.string   "humidity",        null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
