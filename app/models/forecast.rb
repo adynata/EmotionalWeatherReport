@@ -16,6 +16,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+#does this change anything
 require 'open_weather'
 
 class Forecast < ActiveRecord::Base
