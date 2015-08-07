@@ -15,7 +15,10 @@ class ForecastsController < ApplicationController
     end
   end
 
-
+  def index
+    @forecast = Forecast.new
+    @forecast.get_forecast
+  end
 
   private
   def forecast_params
