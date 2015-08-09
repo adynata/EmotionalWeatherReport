@@ -50,4 +50,8 @@ group :development, :test do
 
   # Use React-Rails
   gem 'react-rails', '~> 1.0'
+  
+  #Use Bootstrap
+  gem 'bootstrap-sass', '~> 3.3.5'
+  
 end

@@ -7,13 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="container">
-    <div id="user_nav">
-      <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-      <%= link_to "Connect With Facebook", "/auth/facebook" %>
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="user_nav">
+        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+        <%= link_to "Connect With Facebook", "/auth/facebook" %>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+		    <%= yield %>
+      </div>
     </div>
   </div>
-<%= yield %>
 <%= "#{Rails.env}" %>
 </body>
 </html>
