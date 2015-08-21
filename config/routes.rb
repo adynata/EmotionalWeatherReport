@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/login', :to => 'sessions#new', :as => :login
-  get '/auth/:provider/callback', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#failure'
   get '/logout', :to => 'sessions#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,7 +10,6 @@ Rails.application.routes.draw do
   root 'forecasts#index'
   resources 'forecasts'
   resources 'feels'
-  resources 'users'
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

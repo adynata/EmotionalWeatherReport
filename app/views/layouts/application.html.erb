@@ -12,9 +12,8 @@
   <div class="container-fluid">
     <div class="row">
       <nav id="user_nav">
-        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-        
-        <%= link_to "Connect With Facebook", "/auth/facebook" %>
+        <%= link_to "Home", "/" %> - 
+        <%= link_to "Sign Up", "/users/sign_up" %>
       </nav>
     </div>
     <div class="row">
@@ -22,6 +21,7 @@
         <%= react_component 'Forecasts', { data: @forecast } %>
       </div>
     </div>
+    <%= yield %>
   </div>
 <%= "#{Rails.env}" %>
 </body>
