@@ -12,12 +12,13 @@
   <div class="container-fluid">
     <div class="row">
       <nav id="user_nav">
-        <%= link_to "Home", "/" %>
+        <%= link_to "Home", "/" %> - 
+        <%= link_to "Sign Up", "/users/sign_up" %>
       </nav>
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <!-- <%= react_component 'Forecasts', { data: @forecast } %> -->
+        <%= react_component 'Forecasts', { data: @forecast } %>
       </div>
     </div>
     <%= yield %>
