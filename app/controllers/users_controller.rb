@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -18,26 +19,82 @@ class UsersController < ApplicationController
     @user = User.find(params[:user])
     render :edit
   end
+  #
+  # def update
+  #   @user = User.find(params[:user])
+  #   if @user.update(user_params)
+  #     # you just do - view stays the same if it's a single page or a popped up form, right?
+  #   else
+  #     flash.now[:errors] = @user.errors.full_messages
+  #     render :edit
+  #   end
+  # end
 
   def update
-    @user = User.find(params[:user])
-    if @user.update(user_params)
-      # you just do - view stays the same if it's a single page or a popped up form, right?
-    else
-      flash.now[:errors] = @user.errors.full_messages
-      render :edit
+    # authorize! :update, @user
+    respond_to do |format|
+      if @user.update(user_params)
+        sign_in(@user == current_user ? @user : current_user, :bypass => true)
+        format.html { redirect_to @user, notice: 'Your profile was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
+  # controller methods from the tutorial page:
+  #
+  # ...
+  #
+  # # GET /users/:id.:format
+  def show
+    # authorize! :read, @user
+  end
+  #
+  # # GET /users/:id/edit
+  # def edit
+  #   # authorize! :update, @user
+  # end
+
+  # PATCH/PUT /users/:id.:format
+
+  # GET/PATCH /users/:id/finish_signup
+  def finish_signup
+    # authorize! :update, @user
+    if request.patch? && params[:user] #&& params[:user][:email]
+      if @user.update(user_params)
+        @user.skip_reconfirmation!
+        sign_in(@user, :bypass => true)
+        redirect_to @user, notice: 'Your profile was successfully updated.'
+      else
+        @show_errors = true
+      end
+    end
+  end
+
+  # DELETE /users/:id.:format
   def destroy
-    @user = User.find(params[:user])
+    # authorize! :delete, @user
     @user.destroy
-    redirect_to forecasts_url
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.json { head :no_content }
+    end
   end
 
   private
-  def user_params
-    params.require(:user).permit(:location, :fname, :lname, :username)
-  end
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+
+
+    def user_params
+      accessible = [ :name, :email ] # extend with your own params
+      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
+      params.require(:user).permit(accessible)
+    end
 
 end

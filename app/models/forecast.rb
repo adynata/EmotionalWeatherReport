@@ -23,12 +23,14 @@ class Forecast < ActiveRecord::Base
   validates :zipcode, :sunrise, :sunset, :conditions, :location, :date, presence: true
   attr_accessor :zipcode
   after_initialize :get_forecast
-
+  CONDITIONS = [:sunny, :cloudy, ]
+  #get full complement of possible weather descriptions from open weather
 
   def get_forecast
     forecast = OpenWeather::Current.city("94608")
     self.conditions = forecast["weather"].first["main"]
     self.conditions_desc = forecast["weather"].first["description"]
+    # object lookup for cond with underscores
     self.sunset = forecast["sys"]["sunset"]
     self.sunrise = forecast["sys"]["sunrise"]
     self.date = Date.today
@@ -38,6 +40,11 @@ class Forecast < ActiveRecord::Base
     self.high_temp = forecast["main"]["temp_min"]
     self.humidity = forecast["main"]["humidity"]
   end
+
+  def condition
+
+  end
+
 
 
 end
