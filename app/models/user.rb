@@ -2,19 +2,33 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  username   :string           not null
-#  location   :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  email      :string
-#  fname      :string
-#  lname      :string
+#  id                     :integer          not null, primary key
+#  location               :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  fname                  :string
+#  lname                  :string
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  name                   :string
 #
 
 class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -22,7 +36,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :authorizations
   has_many :feels
-  validates :username, :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
 

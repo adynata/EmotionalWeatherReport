@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
   before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
+  before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_filter :give_me_the_weather
 
   def ensure_signup_complete
@@ -19,6 +20,22 @@ class ApplicationController < ActionController::Base
   def give_me_the_weather
     @forecast = Forecast.new
     @forecast.get_forecast
+  end
+
+  protected
+
+  def configure_devise_permitted_parameters
+    registration_params = [:location, :fname, :lname, :email, :password, :password_confirmation]
+
+    if params[:action] == 'update'
+      devise_parameter_sanitizer.for(:account_update) {
+        |u| u.permit(registration_params << :current_password)
+      }
+    elsif params[:action] == 'create'
+      devise_parameter_sanitizer.for(:sign_up) {
+        |u| u.permit(registration_params)
+      }
+    end
   end
 
 
