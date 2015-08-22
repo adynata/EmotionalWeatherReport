@@ -27,7 +27,7 @@ class Forecast < ActiveRecord::Base
   #get full complement of possible weather descriptions from open weather
 
   def get_forecast
-    forecast = OpenWeather::Current.city("94608")
+    forecast = OpenWeather::Current.city(@zipcode)
     self.conditions = forecast["weather"].first["main"]
     self.conditions_desc = forecast["weather"].first["description"]
     # object lookup for cond with underscores

@@ -8,7 +8,7 @@ class ForecastsController < ApplicationController
   def create
     @forecast = Forecast.new(forecast_params)
     if @forecast.save
-      redirect to forecast_url(@forecast)
+      render :show
     else
       flash.now[:errors] = @forecast.errors.full_messages
       render :new
