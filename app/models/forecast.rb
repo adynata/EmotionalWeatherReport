@@ -27,6 +27,9 @@ class Forecast < ActiveRecord::Base
   #get full complement of possible weather descriptions from open weather
 
   def get_forecast
+    if(!@zipcode)
+      @zipcode = 94608;
+    end
     forecast = OpenWeather::Current.city(@zipcode)
     self.conditions = forecast["weather"].first["main"]
     self.conditions_desc = forecast["weather"].first["description"]

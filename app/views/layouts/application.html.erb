@@ -26,14 +26,14 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <form action="forecasts" method="POST">
+        <!-- <form action="forecasts" method="POST">
           <label for="forecast">Get forecast for a new location:</label>
           <input type="text" name="forecast[zipcode]" value"<%= current_user.location if current_user %>" id="forecast">
           <input type="submit" value="go to there">
         </form>
 
 
-
+ -->
         <%= react_component 'Forecasts', { data: @forecast } %>
       </div>
     </div>

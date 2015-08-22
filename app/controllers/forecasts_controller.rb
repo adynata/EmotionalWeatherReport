@@ -8,7 +8,7 @@ class ForecastsController < ApplicationController
   def create
     @forecast = Forecast.new(forecast_params)
     if @forecast.save
-      render :show
+      render json: @forecast
     else
       flash.now[:errors] = @forecast.errors.full_messages
       render :new
