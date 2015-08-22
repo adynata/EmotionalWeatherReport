@@ -21,14 +21,20 @@
 $font-header:'Century Gothic';
 $font-body:'Cochin';
 $primary-color: #2ba6cb;
+$color-white:#EEE;
+$color-dark:#111;
 
 // Styles
 body, html {
 	font-family: $font-body;
+	color:$color-white;
 }
 h1,h2,h3,h4,h5{
 	font-family: $font-header;
 	color:$primary-color;
+}
+input{
+	color: $color-dark;
 }
 p{}
 h1{font-size:4em;}
@@ -38,6 +44,27 @@ h4{}
 h5{}
 
 ul{list-style:none;}
+
+.index{
+	background-image: url('http://placebear.com/1200/400');
+	background-size: cover;
+	padding: 20px;
+	position:relative;
+	&::after{
+		position:absolute;
+		display:block;
+		background: rgba(0,0,0,0.5);
+		z-index:2;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+	}
+}
+.row {
+	z-index:20;
+	position:relative;
+}
 
 .header{}
 .footer{}
