@@ -14,12 +14,12 @@
       <nav id="user_nav">
         <ul>
           <li><%= link_to "Home", "/" %></li>
-          <% if user_signed_in? %>
-          <li>Hello, <%= current_user %></li>
+          <!-- <% if user_signed_in? %> -->
+          <!-- <li>Hello, <%= current_user %></li> -->
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           <% else %>
           <li><%= link_to "Sign in", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", "/users/sign_up" %></li>
+          <!-- <li><%= link_to "Sign Up", "/users/sign_up" %></li> -->
           <% end %>
         </ul>
       </nav>
