@@ -20,13 +20,13 @@
 // Variables
 $font-header:'Century Gothic';
 $font-body:'Cochin';
-// $primary-color: #2ba6cb;
+$primary-color: #2ba6cb;
 $color-white:#EEE;
 $color-dark:#111;
 
 // Styles
 body, html {
-	// font-family: $font-body;
+	font-family: $font-body;
 	color:$color-white;
 }
 h1,h2,h3,h4,h5{
@@ -39,7 +39,7 @@ input{
 p{}
 h1{font-size:4em;}
 h2{font-size:3.25em;}
-// h3{}
+h3{}
 h4{}
 h5{}
 
