@@ -1,5 +1,7 @@
 require 'yaml'
 secrets = YAML::load_file(File.join(__dir__, '../secrets.yml'))
+twitter = YAML::load_file(File.join(__dir__, '../twitter.yml'))
+
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
@@ -239,10 +241,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, "KEY", "SECRET"
-  config.omniauth :twitter, "KEY", "SECRET"
-  config.omniauth :google, "KEY", "SECRET"
-
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
+  config.omniauth :google, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
