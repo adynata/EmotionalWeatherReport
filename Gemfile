@@ -49,8 +49,13 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  # Redis?
+  gem 'redis'
+
   # Use React-Rails
   gem 'react-rails', '~> 1.0'
+  gem 'react-router-rails', '~>0.13.3.1'
+  gem 'react-bootstrap-rails'
 
   #Use Bootstrap
   gem 'bootstrap-sass', '~> 3.3.5'
