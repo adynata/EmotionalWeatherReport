@@ -25,8 +25,9 @@
       </nav>
     </div>
     <div class="row">
-      <!-- <%= react_component 'Forecasts', { data: @forecast } %> -->
-      <%= react_router 'MyRoutes', 'HistoryLocation', {data: @forecast} %>
+      <%= react_component 'Forecasts', { data: @forecast } %>
+      <%= yield %>
+      <!-- <%= react_router 'MyRoutes', 'HistoryLocation', {data: @forecast} %> -->
     </div>
   </div>
 <%= "#{Rails.env}" %>
