@@ -9,8 +9,11 @@ Registration: currently only requires an email and a password. Location is optio
 If you're trying to get to a route that has so far only been defined in rake routes:
 
 1) go into views > layouts >application.html.erb
+
 2) comment out line 29 (<%= react_router 'MyRoutes', 'HistoryLocation', {data: @forecast} %>)
+
 3) comment in line 30 (<%= yield %>)
 
 4) go into config > routes.rb
+
 5) comment out line 11 (get "/*path" => "application#index")
