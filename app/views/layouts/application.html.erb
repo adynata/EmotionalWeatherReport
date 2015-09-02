@@ -27,11 +27,9 @@
     <div class="row">
       <!-- <%= react_component 'Forecasts', { data: @forecast } %> -->
       <%= react_router 'MyRoutes', 'HistoryLocation', {data: @forecast} %>
+      <!-- <%= yield %> -->
     </div>
   </div>
 <%= "#{Rails.env}" %>
-<% if request.path.include? "signup" %>
-  <!-- <script>$('#password').checkConfirm('#password_confirmation');</script> -->
-<% end %>
 </body>
 </html>

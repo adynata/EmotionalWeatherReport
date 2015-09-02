@@ -19,5 +19,4 @@
 //= require react_router_ujs
 //= require react_bootstrap
 //= require components
-//= require checkConfirm
 //= require_tree .
