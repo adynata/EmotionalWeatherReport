@@ -1,3 +1,4 @@
+_POSITIVE
 AFFECTIONATE
 compassionate
 friendly
@@ -95,6 +96,7 @@ renewed
 rested
 restored
 revived
+_NEGATIVE
 AFRAID
 apprehensive
 dread
