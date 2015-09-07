@@ -26,7 +26,7 @@
           </ul>
             <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
-              <li>Hello, <%= current_user.name %></li>
+              <li class="navbar-text">Hello, <%= current_user.name %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
             <ul class="nav navbar-nav navbar-right">
@@ -39,10 +39,66 @@
     </nav>
     <div class="row">
         <!-- <%= react_component 'Forecasts', { data: @forecast } %> -->
-        <%= react_router 'MyRoutes', 'HistoryLocation', {data: @forecast} %>
-        <!-- <%= yield %> -->
+        <!-- <%= react_router 'MyRoutes', 'HistoryLocation', {data: @forecast, feels_tree: @feelings} %> -->
+        <div class="text-center col-sm-6 positive"><a>Positive!</a></div>
+        <div class="text-center col-sm-6 negative"><a>Negative!</a></div>
+        <div class="posFeels hidden"><ul>
+          <% @feelings["POSITIVE"].keys.each do | category | %>
+          <a href="#"><li class="feel" data-id="<%= current_user.id %>"><%= category %></li></a>
+          <% end %>
+        </ul></div>
+        <div class="negFeels hidden">
+          <ul>
+            <% @feelings["NEGATIVE"].keys.each do | category | %>
+              <li>
+                <a href="" class="category">
+                <div>
+                  <%= category %>
+                </div>
+                <ul class="category-list hidden">
+                  <% @feelings["NEGATIVE"][category].each do |feel| %>
+                    <a href="">
+                      <li class="feel" data-id="<%= current_user.id %>"><%= feel %></li>
+                    </a>
+                  <% end %>
+                </ul>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
     </div>
   </div>
 <%= "#{Rails.env}" %>
+<script>
+  $(document).ready(function(){
+    $('.positive').on('click', function(){
+      $('.posFeels').removeClass("hidden");
+      if(!$('.negFeels').hasClass("hidden")){
+        $('.negFeels').addClass("hidden");
+      }
+    });
+    $('.negative').on('click', function(){
+      $('.negFeels').removeClass("hidden");
+      if(!$('.posFeels').hasClass("hidden")){
+        $('.posFeels').addClass("hidden");
+      }
+    });
+    $('.feel').on('click', function(e){
+      e.preventDefault();
+      var feeling = $(e.target).html();
+      console.log({feel: feeling});
+      $.post('/feels', { feel: {feel: feeling, user_id: 4}}, function(data){
+        console.log(data);
+      });
+    });
+    $('.category').on('click', function(e){
+      e.preventDefault();
+      console.log($(this));
+      console.log($(this).next());
+      $(this).next('.category-list').removeClass('hidden');
+    });
+  });
+</script>
 </body>
 </html>
