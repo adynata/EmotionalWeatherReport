@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
   has_many :feels
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  has_many :friendships
+  has_many :friends, through: :friendships
+  has_many :inverse_friendships, class_name: :Friendship, foreign_key: :friend_id
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
 
 
   def add_provider(auth_hash)
@@ -95,6 +99,10 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
+  end
+
+  def self.find_by_username_or_email(query)
+    User.find_by_name(query) || User.find_by_email(query)
   end
 
   def email_verified?
