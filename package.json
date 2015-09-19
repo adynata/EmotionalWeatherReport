@@ -1,0 +1,52 @@
+{
+  "name": "emotionalweatherreport",
+  "description": "Emotional Weather Report",
+  "contributors": [
+  ],
+  "repository": {
+    "type": "github",
+    "url": "git+https://github.com/adynata/EmotionalWeatherReport"
+  },
+  "devDependencies": {
+    "del": "*",
+    "gulp": "*",
+    "gulp-util": "*",
+    "minimist": "*",
+    "node-notifier": "*",
+    "jsdom": "*",
+    "mocha": "*",
+    "istanbul": "*",
+    "chai": "*",
+    "babel-plugin-react-transform": "*",
+    "react-transform-catch-errors": "*",
+    "react-transform-webpack-hmr": "*",
+    "redbox-react": "*",
+    "webpack-dev-server": "*"
+  },
+  "dependencies": {
+    "webpack": "*",
+    "chunk-manifest-webpack-plugin": "*",
+    "babel": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-runtime": "*",
+    "babel-plugin-typecheck": "*",
+    "exports-loader": "*",
+    "imports-loader": "*",
+    "expose-loader": "*",
+    "bundle-loader": "*",
+    "jquery": "*",
+    "lodash": "*",
+    "react": "*",
+    "react-router": "*"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test mocha --watch --compilers js:compiler.js 'app/frontend/javascripts/**/*-test.js'",
+    "test-coverage": "istanbul cover node_modules/.bin/_mocha -- --compilers js:compiler.js 'app/frontend/javascripts/**/*-test.js'",
+    "dev": "NODE_ENV=development webpack-dev-server --config config/webpack/development.config.js"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  }
+}
