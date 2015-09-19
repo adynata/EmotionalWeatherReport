@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>emotionalweatherreport</title>
+  <title>EWR</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= yield %>
 
-  <%= webpack_manifest_script %> 
+  <%= webpack_manifest_script %>
   <%= javascript_include_tag 'modernizr' %>
+  <%= webpack_bundle_tag 'common' %>
   <%= webpack_bundle_tag 'main' %>
   <%= javascript_include_tag 'application' %>
 </body>
 </html>
-

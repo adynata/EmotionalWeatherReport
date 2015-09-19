@@ -9,9 +9,9 @@ module.exports = _.merge(defaultConfig, {
   /*entry: {
     main: []
   },*/ // Hot Module Replacement
-  /*output: {
-    publicPath: 'http://localhost:8080/assets/build/'
-  },*/ // Hot Module Replacement
+  // output: {
+  //   publicPath: 'http://localhost:3000/assets/build/'
+  // }, // Hot Module Replacement
   cache: true,
   debug: true,
   outputPathinfo: true,
@@ -23,7 +23,7 @@ module.exports = _.merge(defaultConfig, {
   },*/ // Hot Module Replacement
   plugins: [
     /*new webpack.HotModuleReplacementPlugin(), new webpack.NoErrorsPlugin(),*/ // Hot Module Replacement
-    /*new webpack.optimize.CommonsChunkPlugin('common', 'common.bundle.js'),*/ // Code splitting
+    new webpack.optimize.CommonsChunkPlugin('common', 'common.bundle.js'), // Code splitting
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"', '__DEV__': true })
   ]
 }, function(obj1, obj2) {

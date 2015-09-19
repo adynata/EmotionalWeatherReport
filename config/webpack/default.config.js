@@ -12,13 +12,15 @@ module.exports = {
   output: {
     path: config.webpack.build,
     publicPath: '/assets/build/',
-    filename: '[name].bundle.js',
-    chunkFilename: '[id].bundle.js'
+    filename: 'main.bundle.js',
+    chunkFilename: 'chunk.bundle.js'
   },
-  externals: {},
+  externals: {
+    jQuery: 'var jQuery'
+  },
   resolve: {
     modulesDirectories: ['node_modules', 'vendor/assets/bower_components'],
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [{
@@ -26,6 +28,12 @@ module.exports = {
       //exclude: /node_modules(?!.*(\/js-csp))/, // ignore node_modules except node_modules/js-csp
       exclude: /node_modules/,
       loader: 'babel-loader?optional=runtime'
+    }, {
+      test: /\.jsx$/,
+      loader: "babel-loader"
+    }, {
+      test: /\.scss$/,
+      loader: 'style!css!sass'
     }]
   },
   plugins: [

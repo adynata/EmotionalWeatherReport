@@ -19,4 +19,3 @@ module ApplicationHelper
     javascript_tag "window.webpackManifest = #{Rails.configuration.webpack[:common_manifest].to_json}"
   end
 end
-

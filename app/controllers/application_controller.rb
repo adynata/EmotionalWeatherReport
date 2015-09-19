@@ -22,11 +22,6 @@ class ApplicationController < ActionController::Base
     @forecast.get_forecast
   end
 
-  def index
-    @location_path = "/#{params[:path]}"
-  end
-
-
   protected
 
   def configure_devise_permitted_parameters

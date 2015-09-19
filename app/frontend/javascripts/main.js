@@ -7,12 +7,12 @@ require('expose?React!react/addons');
 import $      from 'jquery';
 import React  from 'react/addons';
 import Router from 'react-router';
-import Home   from './home/home';
+import Index   from './index';
 
 $(document).ready(function() {
   // define routing
   const routes = (
-    <Router.Route name='main_page' path='/' handler={Home}></Router.Route>
+    <Router.Route name='main_page' path='/' handler={Index}></Router.Route>
   );
 
   Router.run(routes, Router.HashLocation, function(Handler) {
