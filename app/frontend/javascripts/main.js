@@ -12,10 +12,10 @@ import Index   from './index';
 $(document).ready(function() {
   // define routing
   const routes = (
-    <Router.Route name='main_page' path='/' handler={Index}></Router.Route>
+    <Router.Route name='index' path='/' handler={Index}></Router.Route>
   );
 
   Router.run(routes, Router.HashLocation, function(Handler) {
-    React.render(React.createFactory(Handler)(), document.getElementById('route'));
+    React.render(<Handler />, document.getElementById('route'));
   });
 });

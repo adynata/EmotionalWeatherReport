@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
-  before_filter :give_me_the_weather
+  before_filter :show_me_feelings
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
@@ -17,9 +17,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def give_me_the_weather
-    @forecast = Forecast.new
-    @forecast.get_forecast
+  def show_me_feelings
+    @feelings = Feel.feels_tree
+  end
+
+  def index
   end
 
   protected
