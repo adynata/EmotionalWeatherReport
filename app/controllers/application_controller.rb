@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_filter :give_me_the_weather
+  helper :friendship
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
@@ -21,6 +22,9 @@ class ApplicationController < ActionController::Base
     @forecast = Forecast.new
     @forecast.get_forecast
   end
+
+  def show_me_friends
+    @friends =
 
   def index
     @location_path = "/#{params[:path]}"
