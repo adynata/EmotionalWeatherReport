@@ -28,7 +28,7 @@ class Forecast < ActiveRecord::Base
 
   def get_forecast
     if(!@zipcode)
-      @zipcode = 94608;
+      @zipcode = 94612;
     end
     forecast = OpenWeather::Current.city(@zipcode)
     self.conditions = forecast["weather"].first["main"]

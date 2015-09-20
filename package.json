@@ -38,6 +38,7 @@
     "lodash": "*",
     "node-sass": "^3.3.3",
     "react": "*",
+    "react-async": "^2.1.0",
     "react-bootstrap": "^0.25.2",
     "react-router": "*",
     "sass-loader": "^2.0.1",

@@ -2,8 +2,8 @@
 
 import React from 'react/addons';
 import $ from 'jquery';
-let ReactBootstrap = require('react-bootstrap');
-let ButtonInput = ReactBootstrap.ButtonInput;
+import Nav from './partials/nav';
+import { ButtonInput } from 'react-bootstrap';
 
 let index = React.createClass({
   changeZip: function(e){
@@ -20,11 +20,17 @@ let index = React.createClass({
     });
   },
   render: function() {
-    if(!this.state) {
-      return (<div className="index text-center"><h2>Getting the Weather</h2></div>);
-    }
+    let weather = (this.state) ? <div className="actual-weather">
+                <ul>
+                  <li>Location: {this.state.forecast.location}</li>
+                  <li>Current: {this.state.forecast.conditions_desc}</li>
+                  <li>Temp: {this.state.forecast.current_temp}</li>
+                  <li>Sunrise: {this.state.forecast.sunrise}</li>
+                </ul>
+              </div> : <div className="text-center">Getting the weather...</div>
     return (
     <div className="index">
+      <Nav />
       <div className="row">
         <div className="col-sm-12 text-center forecast">
           <div className="title">
@@ -40,14 +46,7 @@ let index = React.createClass({
               <ButtonInput type="submit" value="New Weather" />
             </form>
           </div>
-          <div className="actual-weather">
-            <ul>
-              <li>Location: {this.state.forecast.location}</li>
-              <li>Current: {this.state.forecast.conditions_desc}</li>
-              <li>Temp: {this.state.forecast.current_temp}</li>
-              <li>Sunrise: {this.state.forecast.sunrise}</li>
-            </ul>
-          </div>
+          {weather}
         </div>
       </div>
     </div>); }
