@@ -59,11 +59,8 @@ gem 'modernizr-rails', '~> 2.7.1'
 
 group :development, :test do
   gem 'quiet_assets'
-  gem 'faker' # https://github.com/stympy/faker
-  gem 'factory_girl_rails' # https://github.com/thoughtbot/factory_girl_rails
   gem 'database_cleaner'
   gem 'rspec'
-  gem 'rspec-rails' # https://github.com/rspec/rspec-rails
   gem 'guard'
   gem 'guard-rspec'
   gem 'shoulda-matchers' # https://github.com/thoughtbot/shoulda-matchers
@@ -88,6 +85,5 @@ gem 'font-awesome-rails'
 gem 'therubyracer', platforms: :ruby
 group :test do
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'launchy'
 end
