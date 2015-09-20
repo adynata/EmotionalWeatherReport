@@ -51,7 +51,14 @@ class UsersController < ApplicationController
   # # GET /users/:id.:format
   def show
     # authorize! :read, @user
+    @user = User.find(params[:user])
+    @friends = @user.friends
+    @feels = @user.feels
   end
+
+
+
+
   #
   # # GET /users/:id/edit
   # def edit

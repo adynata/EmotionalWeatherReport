@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def show_me_friends
-    @friends =
+  end
 
   def index
     @location_path = "/#{params[:path]}"

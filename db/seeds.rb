@@ -57,16 +57,24 @@
 #
 # end
 
-10.times do
-  feel = Feel.new(
-    id: Feel.all.count + 1,
-    feel: Feel.all_feels[rand(0..(Feel.all_feels.length))],
-    user_id: __,
-    created_at: nil,
-    updated_at: nil)
-  feel.save!
-end
-
-# 100.times.do
-#   <Friendship id: nil, created_at: nil, updated_at: nil, user_id: nil, friend_id: nil, status: nil, blocked: nil, accepted_at: nil>
+# 10.times do
+#   feel = Feel.new(
+#     id: Feel.all.count + 1,
+#     feel: Feel.all_feels[rand(0..(Feel.all_feels.length))],
+#     user_id: __,
+#     created_at: nil,
+#     updated_at: nil)
+#   feel.save!
 # end
+1.upto(30) do |id|
+  user = User.find_by_id(id)
+  5.times do
+    rand_friend_id = id
+    until rand_friend_id != id
+      rand_friend_id = rand(1..User.all.count)
+    end
+    friend = User.find_by_id(rand_friend_id)
+    Friendship.request(user, friend)
+    Friendship.accept(user, friend)
+  end
+end
