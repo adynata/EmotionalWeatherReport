@@ -35,9 +35,25 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :authorizations
-  has_many :feels
+  has_many :feels, dependent: :destroy
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  has_many :accepted_friendships, -> { where "status = 'accepted'" },
+           class_name: "Friendship"
+
+  has_many :friends,
+           through: :accepted_friendships
+
+  has_many :requested_friends, -> { where status: 'requested' },
+           through: :friendships
+
+  has_many :pending_friends, -> { where status: 'requested' },
+           through: :friendships
+
+  has_many :inverse_friendships, class_name: :Friendship, foreign_key: :friend_id
+
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
+
 
 
   def add_provider(auth_hash)
@@ -95,6 +111,10 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
+  end
+
+  def self.find_by_username_or_email(query)
+    User.find_by_name(query) || User.find_by_email(query)
   end
 
   def email_verified?
