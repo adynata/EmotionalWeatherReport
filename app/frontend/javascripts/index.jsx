@@ -2,7 +2,6 @@
 
 import React from 'react/addons';
 import $ from 'jquery';
-import Nav from './partials/nav';
 import { ButtonInput } from 'react-bootstrap';
 
 let index = React.createClass({
@@ -29,9 +28,6 @@ let index = React.createClass({
                 </ul>
               </div> : <div className="text-center">Getting the weather...</div>
     return (
-    <div className="index">
-      <Nav />
-      <div className="row">
         <div className="col-sm-12 text-center forecast">
           <div className="title">
             <h2>It Weather</h2>
@@ -47,9 +43,7 @@ let index = React.createClass({
             </form>
           </div>
           {weather}
-        </div>
-      </div>
-    </div>); }
+        </div>); }
 });
 
 module.exports = index;

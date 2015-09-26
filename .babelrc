@@ -8,12 +8,12 @@
         "react-transform"
       ],
       "extra": {
-        "react-transform": [
-          {
-            "target": "react-transform-catch-errors",
+        "react-transform": {
+          "transforms": [{
+            "transform": "react-transform-catch-errors",
             "imports": ["react", "redbox-react"]
-          }
-        ]
+          }]
+        }
       }
     }
   }
