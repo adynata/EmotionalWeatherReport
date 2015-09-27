@@ -1,6 +1,11 @@
 class FeelsController < ApplicationController
   def index
-    @feels_tree = Feel.feels_tree
+    # @feels_tree = Feel.feels_tree
+    render json: Feel.feels_tree
+  end
+
+  def log
+    render json: Feel.feels_tree
   end
 
   def new

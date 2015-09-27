@@ -7,19 +7,25 @@ require('expose?ReactBootstrap!react-bootstrap');
 
 import $      from 'jquery';
 import React  from 'react/addons';
-import Router from 'react-router';
 import Index   from './index';
 import Register from './register';
+import Nav from './partials/nav';
+import FeelsTree from './log';
 
 $(document).ready(function() {
-  // define routing
-  const routes = (
-    <Router.Route name='index' path='/' handler={Index}>
-      <Router.Route name='register' path='/register/' handler={Register} />
-    </Router.Route>
-  );
+  let index = document.getElementById('index');
+  if (index) {
+    React.render(<Index />, index);
+  }
 
-  Router.run(routes, Router.HashLocation, function(Handler) {
-    React.render(<Handler />, document.getElementById('route'));
-  });
+  let nav = document.getElementById('nav');
+  if (nav) {
+    React.render(<Nav />, nav);
+  }
+
+  let feels_tree = document.getElementById('feels_tree');
+  if (feels_tree) {
+    React.render(<FeelsTree />, feels_tree);
+  }
+
 });

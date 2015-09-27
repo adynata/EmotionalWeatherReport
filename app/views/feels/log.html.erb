@@ -1,5 +1,8 @@
 <div class="row">
+    <div id="feels_tree">
+    </div>
 
+    <!-- </div>
     <div class="text-center col-sm-6 positive"><a>Positive!</a></div>
     <div class="text-center col-sm-6 negative"><a>Negative!</a></div>
     <div class="posFeels hidden"><ul>
@@ -29,6 +32,12 @@
     </div>
 </div>
 </div>
+
+<script>
+  feels_tree
+</script>
+
+
 <%= "#{Rails.env}" %>
 <script>
 $(document).ready(function(){
@@ -59,4 +68,5 @@ $('.category').on('click', function(e){
   $(this).next('.category-list').removeClass('hidden');
 });
 });
-</script>
+</script> -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
