@@ -61,12 +61,14 @@ h5{}
 
 ul{list-style:none;}
 
-.index{
-	background-image: url('http://placeowl.com/600/400');
+.overlay-bg {
 	background-size: cover;
 	padding: 20px;
 	position:relative;
+  margin-left:auto;
+  margin-right:auto;
 	&::after{
+    content: " ";
 		position:absolute;
 		display:block;
 		background: rgba(0,0,0,0.5);
@@ -77,9 +79,25 @@ ul{list-style:none;}
 		right:0;
 	}
 }
+.owl-bg {
+  &.big {
+    background-image: url('http://placeowl.com/800/600');
+  }
+  &.med {
+    background-image: url('http://placeowl.com/600/400');
+  }
+  &.sm {
+    background-image: url('http://placeowl.com/200/300');
+  }
+}
+
 .row {
 	z-index:20;
 	position:relative;
+}
+
+.modal-body {
+  overflow:auto;
 }
 
 .header{}
