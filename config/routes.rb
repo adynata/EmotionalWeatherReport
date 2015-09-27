@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   root 'application#index'
   # get "/*path" => "application#index"
   # root 'forecasts#index'
-  get '/feels/log', :to => 'feels#new'
-  get '/feels/tree', :to => 'feels#log'
+  get '/feels/new', :to => 'feels#new'
+  get '/feels/log', :to => 'feels#log'
 
   resources 'forecasts'
   resources 'feels'
