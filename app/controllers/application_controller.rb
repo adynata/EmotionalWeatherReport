@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :show_me_feelings
   helper :friendships
 
+
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
@@ -23,15 +24,16 @@ class ApplicationController < ActionController::Base
     @feelings = Feel.feels_tree
   end
 
-  def show_me_feelings
-    @feelings = Feel.feels_tree
-  end
-
   def index
     @location_path = "/#{params[:path]}"
   end
 
-  def show_me_friends
+  # def show_me_friends
+  #   @user = User.find_by_id(current_user.params[:id])
+  # end
+
+  def give_me_the_weather
+    @forecast = Forecast.new
   end
 
 
