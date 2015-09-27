@@ -26,16 +26,16 @@ let PasswordInput = React.createClass({
   },
   toggleVis: function(e) {
     e.preventDefault();
-    if($(e.target).hasClass('glyphicon-eye-open')){
-      $(e.target).removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close");
+    if($('.toggle-password').hasClass('glyphicon-eye-open')){
+      $('.toggle-password').removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close");
       $("#password")[0].type = "text";
     } else {
-      $(e.target).removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open");
+      $('.toggle-password').removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open");
       $("#password")[0].type = "password";
     }
   },
   render: function() {
-    let vis = <Button><i className='glyphicon glyphicon-eye-open' onClick={this.toggleVis}></i></Button>;
+    let vis = <Button onClick={this.toggleVis}><i className='toggle-password glyphicon glyphicon-eye-open'></i></Button>;
     return (<Input type="password"
             buttonBefore={vis}
             value={this.state.value}
@@ -53,7 +53,7 @@ let PasswordInput = React.createClass({
     }
 });
 
-let Register = React.createClass({
+let register = React.createClass({
   getInitialState: function() {
     return {show: this.props.show}
   },
@@ -70,6 +70,11 @@ let Register = React.createClass({
       authenticity_token: this.getMetaContent("csrf-token")
     }).done((data) => {console.log(data)});
   },
+  componentWillReceiveProps: function(nextProps){
+    this.setState({
+      show: nextProps.show > this.props.show
+    });
+  },
   getMetaContent: function(name){
     let metas = document.getElementsByTagName('meta');
 
@@ -81,7 +86,8 @@ let Register = React.createClass({
     });
   },
   render: function(){
-    return (<Modal show={this.state.show} onHide={this.props.close}>
+    return (
+    <Modal show={this.state.show} onHide={this.props.close}>
       <Modal.Header closeButton>
         <Modal.Title>Sign Up</Modal.Title>
       </Modal.Header>
@@ -97,11 +103,10 @@ let Register = React.createClass({
          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.close}>Cancel</Button>
-          Already have an account? <Button onClick={this.props.switch}>Sign In</Button>
+          <Button onClick={this.props.close}>Cancel</Button> <Button onClick={this.props.switchModal}>Sign In</Button>
         </Modal.Footer>
       </Modal>);
   }
 });
 
-module.exports = Register;
+module.exports = register;

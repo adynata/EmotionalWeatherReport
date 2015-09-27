@@ -8,8 +8,9 @@ require('expose?ReactBootstrap!react-bootstrap');
 import $      from 'jquery';
 import React  from 'react/addons';
 import Index   from './index';
-import Register from './register';
 import Navigation from './partials/nav';
+import Register from './register';
+
 
 $(document).ready(function() {
   let index = document.getElementById('index');
