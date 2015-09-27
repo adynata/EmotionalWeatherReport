@@ -4,12 +4,13 @@
   <title>EWR</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <script>
+    <%= @forecast %>
+  </script>
 </head>
 <body>
   <div class="container-fluid index">
-    <div class="row">
-      <div id="nav"></div>
-    </div>
+    <div id="nav"></div>
     <div class="row">
     <%= yield %>
   </div>
