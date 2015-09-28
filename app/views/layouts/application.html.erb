@@ -16,6 +16,11 @@
     </div>
     <div class="row">
     <%= yield %>
+    <% if current_user? %>
+      <%= render: "/feels/console" %>
+    <% end %>
+
+
   </div>
   </div>
   <%= webpack_manifest_script %>
