@@ -8,10 +8,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      rendirect_to forecast_url(@user.location)
+      render json: {"response"=>"success", "first_name"=>@user.fname }
     else
       flash.now[:errors] = @user.errors.full_messages
-      render :new
+      render json: :new
     end
   end
 

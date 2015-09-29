@@ -3,55 +3,7 @@
 import React from 'react/addons';
 import $ from 'jquery';
 import { Modal, Input, ButtonInput, Button } from 'react-bootstrap';
-
-let PasswordInput = React.createClass({
-  getInitialState: function() {
-    return {value: '', help: 'Password must be at least 8 characters'};
-  },
-  validationState: function() {
-    if (this.state.value.length > 7){
-      return 'success'
-    } else if (this.state.value.length > 0) {
-      return 'error'
-    }
-  },
-  handleChange: function() {
-    let pwrd = this.refs.input.getValue();
-    this.setState({value: pwrd});
-    if (pwrd.length > 7) {
-      this.setState({help: ''});
-    } else {
-      this.setState({help: 'Password must be at least 8 characters'});
-    }
-  },
-  toggleVis: function(e) {
-    e.preventDefault();
-    if($('.toggle-password').hasClass('glyphicon-eye-open')){
-      $('.toggle-password').removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close");
-      $("#password")[0].type = "text";
-    } else {
-      $('.toggle-password').removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open");
-      $("#password")[0].type = "password";
-    }
-  },
-  render: function() {
-    let vis = <Button onClick={this.toggleVis}><i className='toggle-password glyphicon glyphicon-eye-open'></i></Button>;
-    return (<Input type="password"
-            buttonBefore={vis}
-            value={this.state.value}
-            placeholder="Password"
-            label="Password"
-            help={this.state.help}
-            bsStyle={this.validationState()}
-            hasFeedback
-            ref="input"
-            groupClassName="group-class"
-            labelClassName="label-class"
-            id="password"
-            onChange={this.handleChange}
-            required />);
-    }
-});
+import PasswordInput from './partials/passwordInput';
 
 let register = React.createClass({
   getInitialState: function() {
@@ -59,16 +11,19 @@ let register = React.createClass({
   },
   submit: function(e){
     e.preventDefault();
-    let loc = ($('#location').val()) ? $('#location').val() : '94612';
-    let user = {email: $('#email').val(), password: $('#password').val(), location: loc}
-    $.ajax({
-      method: 'POST',
-      url: '/users',
-      data: {
-        user: user
-        },
-      authenticity_token: this.getMetaContent("csrf-token")
-    }).done((data) => {console.log(data)});
+    let loc = ($('#location').val()) ? $('#location').val() : 'Oakland, CA';
+    let user = {email: $('#signup-email').val(), password: $('#signup-password').val(), location: loc};
+    console.log(user);
+    // $.ajax({
+    //   method: 'POST',
+    //   url: '/users',
+    //   data: {
+    //     user: user
+    //     },
+    //   authenticity_token: this.getMetaContent("csrf-token")
+    // }).done((data) => {
+    //   console.log(data);
+    // });
   },
   componentWillReceiveProps: function(nextProps){
     this.setState({
@@ -76,7 +31,7 @@ let register = React.createClass({
     });
   },
   getMetaContent: function(name){
-    let metas = document.getElementsByTagName('meta');
+    let metas = $('meta').toArray();
 
     metas.forEach((meta) => {
       if (meta.getAttribute("name") == name) {
@@ -96,9 +51,9 @@ let register = React.createClass({
           <div className="col-sm-8 col-sm-offset-2">
             <div className="results"></div>
             <form id="registrationForm" onSubmit={this.submit} className="form">
-              <Input type="email" id="email" groupClassName="group-class" labelClassName="label-class" label="Email*" hasFeedback required />
+              <Input type="email" id="signup-email" groupClassName="group-class" labelClassName="label-class" label="Email*" hasFeedback required />
               <Input type="text" id="location" groupClassName="group-class" labelClassName="label-class" label="Default Location" />
-              <PasswordInput />
+              <PasswordInput toggle="signup-toggle" id="signup-password" help="Password must be at least 8 characters" />
               <ButtonInput type="submit" value="Register" />
             </form>
            </div>

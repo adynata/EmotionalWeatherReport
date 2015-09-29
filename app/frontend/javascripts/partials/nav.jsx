@@ -3,6 +3,7 @@
 import React from 'react/addons';
 import { Navbar, CollapsibleNav, Nav, NavItem } from 'react-bootstrap';
 import Register from '../register';
+import Login from '../login';
 
 let nav = React.createClass({
   getInitialState: function(){
@@ -47,6 +48,7 @@ let nav = React.createClass({
         </CollapsibleNav>
       </Navbar>
       <Register show={this.state.register} close={this.close} switchModal={this.switch} />
+      <Login show={this.state.login} close={this.close} switchModal={this.switch} />
     </div>
     );
   }

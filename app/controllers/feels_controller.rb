@@ -7,4 +7,7 @@ class FeelsController < ApplicationController
     render json: Feels.feels_tree
   end
 
+  def create
+  end
+
 end
