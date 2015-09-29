@@ -1,4 +1,5 @@
 class FeelsController < ApplicationController
+
   def index
     # @feels_tree = Feel.feels_tree
     render json: Feel.feels_tree
@@ -27,5 +28,6 @@ class FeelsController < ApplicationController
   def feels_params
     params.require(:feel).permit(:feel, :user_id)
   end
+
 
 end

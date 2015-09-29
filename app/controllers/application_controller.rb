@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_filter :give_me_the_weather
-  before_filter :show_me_feelings
   helper :friendships
 
 
@@ -18,6 +17,11 @@ class ApplicationController < ActionController::Base
     if current_user && !current_user.email_verified?
       redirect_to finish_signup_path(current_user)
     end
+  end
+
+  def give_me_the_weather
+    @forecast = Forecast.new
+    @forecast.get_forecast
   end
 
   def show_me_feelings

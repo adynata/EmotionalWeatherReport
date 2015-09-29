@@ -64,12 +64,17 @@ h3{}
 h4{}
 h5{}
 
-.index{
-	// background-image: url('http://placeowl.com/600/400');
+
+ul{list-style:none;}
+
+.overlay-bg {
 	background-size: cover;
 	padding: 20px;
 	position:relative;
+  margin-left:auto;
+  margin-right:auto;
 	&::after{
+    content: " ";
 		position:absolute;
 		display:block;
 		background: rgba(0,0,0,0.5);
@@ -80,13 +85,30 @@ h5{}
 		right:0;
 	}
 }
+.owl-bg {
+  &.big {
+    background-image: url('http://placeowl.com/800/600');
+  }
+  &.med {
+    background-image: url('http://placeowl.com/600/400');
+  }
+  &.sm {
+    background-image: url('http://placeowl.com/200/300');
+  }
+}
+
 .row {
 	z-index:20;
 	position:relative;
 }
 
+<<<<<<< HEAD
 .navbar {
 	border-radius:0;
+=======
+.modal-body {
+  overflow:auto;
+>>>>>>> 210e87e0043b8a5466b642b9b820bdb09af17ff7
 }
 
 .header{}

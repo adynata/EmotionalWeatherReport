@@ -8,9 +8,9 @@ require('expose?ReactBootstrap!react-bootstrap');
 import $      from 'jquery';
 import React  from 'react/addons';
 import Index   from './index';
+import Navigation from './partials/nav';
 import Register from './register';
-import Nav from './partials/nav';
-import FeelsTree from './log';
+
 
 $(document).ready(function() {
   let index = document.getElementById('index');
@@ -20,7 +20,12 @@ $(document).ready(function() {
 
   let nav = document.getElementById('nav');
   if (nav) {
-    React.render(<Nav />, nav);
+    React.render(<Navigation />, nav);
+  }
+
+  let feels = document.getElementById('feels');
+  if (feels) {
+    React.render(<FeelingsTree />, feels);
   }
 
   let feels_tree = document.getElementById('feels_tree');
