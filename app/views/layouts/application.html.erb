@@ -9,8 +9,8 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <% if current_user? %>
-    <%= render: current_user.name %>
+  <% if current_user %>
+    <% #render current_user.name %>
   <% end %>
   <div class="container-fluid overlay-bg owl-bg big">
     <div id="nav"></div>
