@@ -1,4 +1,6 @@
   # app/assets/javascripts/components/forecasts.js.jsx.coffee
+Input = ReactBootstrap.Input
+ButtonInput = ReactBootstrap.ButtonInput
 
 @Forecasts = React.createClass
 	getInitialState: ->
@@ -12,22 +14,24 @@
 
 	render: ->
 		# console.log this.state
-		`<div className="col-sm-12 forecast">
+		`<div className="col-sm-12 text-center forecast">
 				<div className="title"><h2>It Weather</h2></div>
+				<h3>The Only Weather App That Cares How You Feel</h3>
 				<div className="change-weather">
 					<form onSubmit={this.changeZip}>
-						<label>Change Zipcode?</label>
-						<input name="zip" type="text" placeholder="zipcode" />
-						<input type="submit" className="btn btn-primary" calue="Change"></input>
+						<div className="form-group">
+						<h4>Change Weather?</h4>
+						<input type="text" name="zip" />
+						</div>
+						<ButtonInput type="submit" value="New Weather" />
 					</form>
 				</div>
 				<div className="actual-weather">
 					<ul>
 						<li>Location: {this.state.forecast.location}</li>
 						<li>Current: {this.state.forecast.conditions_desc}</li>
-						<li></li>
-						<li></li>
-						<li></li>
+						<li>Temp: {this.state.forecast.current_temp}</li>
+						<li>Sunrise: {this.state.forecast.sunrise}</li>
 					</ul>
 				</div>
 		</div>`

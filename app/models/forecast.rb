@@ -18,6 +18,7 @@
 #
 #does this change anything
 require 'open_weather'
+require 'date'
 
 class Forecast < ActiveRecord::Base
   validates :zipcode, :sunrise, :sunset, :conditions, :location, :date, presence: true
@@ -34,8 +35,8 @@ class Forecast < ActiveRecord::Base
     self.conditions = forecast["weather"].first["main"]
     self.conditions_desc = forecast["weather"].first["description"]
     # object lookup for cond with underscores
-    self.sunset = forecast["sys"]["sunset"]
-    self.sunrise = forecast["sys"]["sunrise"]
+    self.sunset = DateTime.strptime(forecast["sys"]["sunset"].to_s,'%s')
+    self.sunrise = DateTime.strptime(forecast["sys"]["sunrise"].to_s,'%s')
     self.date = Date.today
     self.location = forecast["name"]
     self.current_temp = forecast["main"]["temp"]

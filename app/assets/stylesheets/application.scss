@@ -36,14 +36,17 @@ h1,h2,h3,h4,h5{
 input{
 	color: $color-dark;
 }
+ul {
+	list-style: none;
+	margin:0;
+	padding:0;
+}
 p{}
 h1{font-size:4em;}
 h2{font-size:3.25em;}
 h3{}
 h4{}
 h5{}
-
-ul{list-style:none;}
 
 .index{
 	background-image: url('http://placeowl.com/600/400');
@@ -64,6 +67,10 @@ ul{list-style:none;}
 .row {
 	z-index:20;
 	position:relative;
+}
+
+.navbar {
+	border-radius:0;
 }
 
 .header{}
