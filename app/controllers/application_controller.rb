@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :give_me_the_weather
   helper :friendships
 
+
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
@@ -27,16 +28,23 @@ class ApplicationController < ActionController::Base
     @feelings = Feel.feels_tree
   end
 
-  def show_me_friends
+  def index
+    @location_path = "/#{params[:path]}"
   end
 
-  def index
+  # def show_me_friends
+  #   @user = User.find_by_id(current_user.params[:id])
+  # end
+
+  def give_me_the_weather
+    @forecast = Forecast.new
   end
+
 
   protected
 
   def configure_devise_permitted_parameters
-    registration_params = [:location, :fname, :lname, :email, :name, :password, :password_confirmation]
+    registration_params = [:location, :email, :password]
 
     if params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) {

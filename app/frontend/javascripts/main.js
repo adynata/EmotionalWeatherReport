@@ -27,4 +27,10 @@ $(document).ready(function() {
   if (feels) {
     React.render(<FeelingsTree />, feels);
   }
+
+  let feels_tree = document.getElementById('feels_tree');
+  if (feels_tree) {
+    React.render(<FeelsTree />, feels_tree);
+  }
+
 });

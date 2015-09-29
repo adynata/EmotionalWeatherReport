@@ -52,12 +52,18 @@ ul, li {
 input{
 	color: $color-dark;
 }
+ul {
+	list-style: none;
+	margin:0;
+	padding:0;
+}
 p{}
 h1{font-size:4em;}
 h2{font-size:3.25em;}
 h3{}
 h4{}
 h5{}
+
 
 ul{list-style:none;}
 
@@ -96,8 +102,13 @@ ul{list-style:none;}
 	position:relative;
 }
 
+<<<<<<< HEAD
+.navbar {
+	border-radius:0;
+=======
 .modal-body {
   overflow:auto;
+>>>>>>> 210e87e0043b8a5466b642b9b820bdb09af17ff7
 }
 
 .header{}

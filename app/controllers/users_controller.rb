@@ -15,6 +15,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def friends_timeline
+    @friends = User.friends
+    friends_array = []
+    @friends.each do |friend|
+      friend_hash = {}
+      friend_hash["name"] = friend.name
+      feels = friend.feels
+      feels
+    end
+  end
+
   def edit
     @user = User.find(params[:user])
     render :edit

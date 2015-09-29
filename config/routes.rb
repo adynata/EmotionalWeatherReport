@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_scope :user do
     get '/auth/:provider/callback', to: 'devise/sessions#create'
     get '/login', :to => 'devise/sessions#new', :as => :login
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+
   root 'application#index'
   # get "/*path" => "application#index"
   # root 'forecasts#index'
