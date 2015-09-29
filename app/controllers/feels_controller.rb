@@ -16,7 +16,7 @@ class FeelsController < ApplicationController
   def create
     @feel = Feel.new(feels_params)
     if @feel.save!
-      render json: "success"
+      render json: @feel
     else
       flash.now[:errors] = @feel.errors.full_messages
       render json: "FAIL"

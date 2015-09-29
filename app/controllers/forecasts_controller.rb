@@ -11,7 +11,6 @@ class ForecastsController < ApplicationController
       render json: @forecast
     else
       flash.now[:errors] = @forecast.errors.full_messages
-      render :new
     end
   end
 
