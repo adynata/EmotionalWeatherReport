@@ -318,6 +318,7 @@ DEPENDENCIES
   omniauth-twitter
   open-weather
   pg
+  pry
   rails (= 4.2.3)
   react-bootstrap-rails
   react-rails (~> 1.0)

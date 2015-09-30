@@ -57,6 +57,8 @@ group :development, :test do
   # Redis?
   gem 'redis'
 
+  gem 'pry'
+
   # Use React-Rails
   gem 'react-rails', '~> 1.0'
   gem 'react-router-rails', '~>0.13.3.1'

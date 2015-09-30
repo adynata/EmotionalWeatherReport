@@ -66,6 +66,7 @@
 #     updated_at: nil)
 #   feel.save!
 # end
+
 1.upto(30) do |id|
   user = User.find_by_id(id)
   5.times do
