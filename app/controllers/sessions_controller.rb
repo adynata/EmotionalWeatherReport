@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    render :session_new
   end
 
 

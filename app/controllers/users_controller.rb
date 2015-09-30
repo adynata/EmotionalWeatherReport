@@ -8,10 +8,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      rendirect_to forecast_url(@user.location)
+      render json: {"response"=>"success", "first_name"=>@user.fname }
     else
       flash.now[:errors] = @user.errors.full_messages
-      render :new
+      render json: :new
+    end
+  end
+
+  def friends_timeline
+    @friends = User.friends
+    friends_array = []
+    @friends.each do |friend|
+      friend_hash = {}
+      friend_hash["name"] = friend.name
+      feels = friend.feels
+      feels
     end
   end
 

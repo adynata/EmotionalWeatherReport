@@ -17,7 +17,7 @@ class ForecastsController < ApplicationController
 
   def index
     @forecast = Forecast.new
-    @forecast.get_forecast
+    render json: @forecast
   end
 
   private

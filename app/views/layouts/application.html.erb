@@ -2,37 +2,26 @@
 <html>
 <head>
   <title>EWR</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <div class="container-fluid index">
+
+  <% if current_user %>
+    <% #render current_user.name %>
+  <% end %>
+  <div class="container-fluid overlay-bg owl-bg big">
+    <div id="nav"></div>
     <div class="row">
-      <nav id="user_nav">
-        <ul>
-          <li><%= link_to "Home", "/" %></li>
-          <% if user_signed_in? %>
-          <li>Hello, <%= current_user.name %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", "/users/sign_up" %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-    <div class="row">
-      <%= react_component 'Forecasts', { data: @forecast } %>
       <%= yield %>
-      <!-- <%= react_router 'MyRoutes', 'HistoryLocation', {data: @forecast} %> -->
     </div>
   </div>
-<%= "#{Rails.env}" %>
-<% if request.path.include? "signup" %>
-  <!-- <script>$('#password').checkConfirm('#password_confirmation');</script> -->
-<% end %>
+  <%= webpack_manifest_script %>
+  <%= javascript_include_tag 'modernizr' %>
+  <%= webpack_bundle_tag 'common' %>
+  <%= webpack_bundle_tag 'main' %>
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>

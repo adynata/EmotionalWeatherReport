@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
   before_filter :ensure_signup_complete, only: [:new, :create, :update, :destroy]
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_filter :give_me_the_weather
+<<<<<<< HEAD
   helper :friendship
+=======
+  helper :friendships
+
+>>>>>>> exp-frontend
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
@@ -23,18 +28,31 @@ class ApplicationController < ActionController::Base
     @forecast.get_forecast
   end
 
+<<<<<<< HEAD
   def show_me_friends
+=======
+  def show_me_feelings
+    @feelings = Feel.feels_tree
+>>>>>>> exp-frontend
   end
 
   def index
     @location_path = "/#{params[:path]}"
   end
 
+  # def show_me_friends
+  #   @user = User.find_by_id(current_user.params[:id])
+  # end
+
+  def give_me_the_weather
+    @forecast = Forecast.new
+  end
+
 
   protected
 
   def configure_devise_permitted_parameters
-    registration_params = [:location, :fname, :lname, :email, :name, :password, :password_confirmation]
+    registration_params = [:location, :email, :password]
 
     if params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) {
