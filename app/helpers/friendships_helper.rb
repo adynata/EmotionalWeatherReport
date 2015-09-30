@@ -12,5 +12,6 @@ module FriendshipsHelper
       return ("#{friend.name} is your friend.")
     end
   end
-  
+
+
 end

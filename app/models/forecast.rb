@@ -29,9 +29,9 @@ class Forecast < ActiveRecord::Base
 
   def get_forecast
     if(!@zipcode)
-      @zipcode = 94608;
+      @zipcode = "Oakland, CA";
     end
-    forecast = OpenWeather::Current.city(@zipcode)
+    forecast = OpenWeather::Current.city(@zipcode, units: 'imperial')
     self.conditions = forecast["weather"].first["main"]
     self.conditions_desc = forecast["weather"].first["description"]
     # object lookup for cond with underscores

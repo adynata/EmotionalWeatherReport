@@ -67,15 +67,15 @@
 #   feel.save!
 # end
 
-1.upto(30) do |id|
-  user = User.find_by_id(id)
-  5.times do
-    rand_friend_id = id
-    until rand_friend_id != id
-      rand_friend_id = rand(1..User.all.count)
-    end
-    friend = User.find_by_id(rand_friend_id)
-    Friendship.request(user, friend)
-    Friendship.accept(user, friend)
-  end
-end
+# 1.upto(30) do |id|
+#   user = User.find_by_id(id)
+#   5.times do
+#     rand_friend_id = id
+#     until rand_friend_id != id
+#       rand_friend_id = rand(1..User.all.count)
+#     end
+#     friend = User.find_by_id(rand_friend_id)
+#     Friendship.request(user, friend)
+#     Friendship.accept(user, friend)
+#   end
+# end
