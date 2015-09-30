@@ -10,6 +10,7 @@ import React  from 'react/addons';
 import Index   from './index';
 import Navigation from './partials/nav';
 import Register from './register';
+import FeelsTree from './log'
 
 
 $(document).ready(function() {

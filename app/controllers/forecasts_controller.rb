@@ -21,6 +21,7 @@ class ForecastsController < ApplicationController
   end
 
   private
+  
   def forecast_params
     params.require(:forecast).permit(:zipcode)
   end

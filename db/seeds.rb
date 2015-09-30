@@ -66,7 +66,6 @@
 #     updated_at: nil)
 #   feel.save!
 # end
-<<<<<<< HEAD
 1.upto(30) do |id|
   user = User.find_by_id(id)
   5.times do
@@ -79,7 +78,6 @@
     Friendship.accept(user, friend)
   end
 end
-=======
 # 1.upto(30) do |id|
 #   user = User.find_by_id(id)
 #   5.times do
@@ -92,4 +90,3 @@ end
 #     Friendship.accept(user, friend)
 #   end
 # end
->>>>>>> exp-frontend

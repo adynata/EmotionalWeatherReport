@@ -28,11 +28,10 @@ module EWR
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-<<<<<<< HEAD
-=======
+
     # config.to_prepare do
     #   DeviseController.respond_to :html, :json
->>>>>>> exp-frontend
+    # end
 
     config.generators do |g|
       g.test_framework :rspec,
@@ -44,5 +43,6 @@ module EWR
         :request_specs => true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+
   end
 end
