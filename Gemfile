@@ -14,7 +14,7 @@ gem 'sass-rails', '~> 5.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'		
+gem 'turbolinks'
 
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -32,6 +32,29 @@ gem 'dotenv-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# twitter bootstrap
+gem 'bootstrap-sass'
+# auto prefixer
+gem 'autoprefixer-rails'
+# bower dependencies manager for rails
+gem 'bower-rails'
+# modernizr
+gem 'modernizr-rails', '~> 2.7.1'
+
+gem 'pry'
+
+# Use React-Rails
+gem 'react-rails', '~> 1.0'
+gem 'react-router-rails', '~>0.13.3.1'
+gem 'react-bootstrap-rails'
+
+# font awesome
+# gem 'font-awesome-rails'
+# embed the V8 Javascript Interpreter into Ruby
+gem 'therubyracer', platforms: :ruby
+
+#Use Bootstrap
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -48,31 +71,6 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  # Redis?
-  gem 'redis'
-end
-# twitter bootstrap
-gem 'bootstrap-sass'
-# auto prefixer
-gem 'autoprefixer-rails'
-# bower dependencies manager for rails
-gem 'bower-rails'
-# modernizr
-gem 'modernizr-rails', '~> 2.7.1'
-
-<<<<<<< HEAD
-  gem 'pry'
-
-  # Use React-Rails
-  gem 'react-rails', '~> 1.0'
-  gem 'react-router-rails', '~>0.13.3.1'
-  gem 'react-bootstrap-rails'
-
-  #Use Bootstrap
-  gem 'bootstrap-sass', '~> 3.3.5'
-
-=======
-group :development, :test do
   gem 'quiet_assets'
   gem 'database_cleaner'
   gem 'rspec'
@@ -84,28 +82,15 @@ group :development, :test do
   gem 'mailcatcher'
   gem 'did_you_mean'
 end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
 end
-group :test do
-  gem 'airborne' # api test
-end
-# react jsx compile
-gem 'react-rails'
-# font awesome
-gem 'font-awesome-rails'
-# embed the V8 Javascript Interpreter into Ruby
-gem 'therubyracer', platforms: :ruby
-group :test do
-  gem 'capybara'
-  gem 'launchy'
->>>>>>> exp-frontend
-end
 
 group :test do
+  gem 'airborne' # api test
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'launchy'
 end

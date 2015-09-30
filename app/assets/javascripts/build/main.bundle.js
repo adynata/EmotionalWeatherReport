@@ -28,6 +28,10 @@ webpackJsonp([1,0],[
 	
 	var _register2 = _interopRequireDefault(_register);
 	
+	var _log = __webpack_require__(418);
+	
+	var _log2 = _interopRequireDefault(_log);
+	
 	__webpack_require__(225);
 	__webpack_require__(223);
 	__webpack_require__(224);
@@ -50,7 +54,7 @@ webpackJsonp([1,0],[
 	
 	  var feels_tree = document.getElementById('feels_tree');
 	  if (feels_tree) {
-	    _reactAddons2['default'].render(_reactAddons2['default'].createElement(FeelsTree, null), feels_tree);
+	    _reactAddons2['default'].render(_reactAddons2['default'].createElement(_log2['default'], null), feels_tree);
 	  }
 	});
 
@@ -48295,6 +48299,93 @@ webpackJsonp([1,0],[
 		return to;
 	};
 
+
+/***/ },
+/* 418 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _reactTransformCatchErrors2 = __webpack_require__(90);
+	
+	var _interopRequireDefault = __webpack_require__(2)['default'];
+	
+	var _reactTransformCatchErrors3 = _interopRequireDefault(_reactTransformCatchErrors2);
+	
+	var _react = __webpack_require__(1);
+	
+	var _redboxReact = __webpack_require__(111);
+	
+	var _reactAddons = __webpack_require__(50);
+	
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
+	
+	var _jquery = __webpack_require__(57);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	//-- import d3??
+	
+	var _components = {
+	  _$Unknown: {}
+	};
+	
+	var _reactComponentWrapper = (0, _reactTransformCatchErrors3['default'])({
+	  filename: '/Users/paigedestroy/Desktop/EmotionalWeatherReport/EWR/app/frontend/javascripts/log.jsx',
+	  components: _components,
+	  locals: [],
+	  imports: [_react, _redboxReact]
+	});
+	
+	function _wrapComponent(uniqueId) {
+	  return function (ReactClass) {
+	    return _reactComponentWrapper(ReactClass, uniqueId);
+	  };
+	}
+	
+	var feels_tree = _wrapComponent('_$Unknown')(_reactAddons2['default'].createClass({
+	  componentWillMount: function componentWillMount() {
+	    var _this = this;
+	
+	    _jquery2['default'].get('/feels/log', function (data) {
+	      _this.setState({
+	        feels_tree: data
+	      });
+	    });
+	  },
+	  render: function render() {
+	    var feels_tree = this.state.feels_tree ? _reactAddons2['default'].createElement(
+	      'div',
+	      { className: 'feels_tree' },
+	      _reactAddons2['default'].createElement(
+	        'ul',
+	        null,
+	        (function () {
+	          for (var key in this.state.feels_tree) {
+	            return _reactAddons2['default'].createElement(
+	              'li',
+	              null,
+	              ' ',
+	              key,
+	              ' "MONKEY" '
+	            );
+	          }
+	        }).call(this)
+	      )
+	    ) : _reactAddons2['default'].createElement(
+	      'div',
+	      null,
+	      'Log Feel'
+	    );
+	    return _reactAddons2['default'].createElement(
+	      'div',
+	      null,
+	      feels_tree
+	    );
+	  }
+	}));
+	
+	module.exports = feels_tree;
 
 /***/ }
 ]);
