@@ -4,6 +4,9 @@ import $ from 'jquery';
 //-- import d3??
 
 let feels_tree = React.createClass({
+  getInitialState: function(){
+    return {feels_tree: {}};
+  },
   componentWillMount: function(){
     $.get('/feels/log', data => {
       this.setState({
@@ -12,15 +15,14 @@ let feels_tree = React.createClass({
     });
   },
   render: function(){
-    let feels_tree = (this.state.feels_tree) ? <div className="feels_tree">
-    <ul>{function(){
-          for (var key in this.state.feels_tree){
-            return <li> {key} "MONKEY" </li>
-          }
-        }.call(this)
+    let feels_view = (this.state.feels_tree) ? <div className="feels_tree">
+    <ul>{
+          Object.keys(this.state.feels_tree).map(key => {
+            return(<li>{key}</li>);
+          }, this)
       }
     </ul></div> : <div>Log Feel</div>
-    return(<div>{feels_tree}</div>);
+    return(<div>{feels_view}</div>);
   }
 });
 
