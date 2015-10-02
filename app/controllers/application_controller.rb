@@ -25,14 +25,15 @@ class ApplicationController < ActionController::Base
 
   def show_me_feelings
     @feelings = Feel.feels_tree
+  end
 
   def index
     @location_path = "/#{params[:path]}"
   end
 
-  # def show_me_friends
-  #   @user = User.find_by_id(current_user.params[:id])
-  # end
+  def show_me_friends
+    @user = User.find_by_id(current_user.params[:id])
+  end
 
   def give_me_the_weather
     @forecast = Forecast.new
@@ -54,5 +55,4 @@ class ApplicationController < ActionController::Base
       }
     end
   end
-end
 end
