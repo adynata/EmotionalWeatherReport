@@ -18,5 +18,4 @@
 
 config/secrets.yml
 app/assets/javascripts/build
-
 node_modules

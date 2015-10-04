@@ -29,5 +29,4 @@ class FeelsController < ApplicationController
     params.require(:feel).permit(:feel, :user_id)
   end
 
-
 end
