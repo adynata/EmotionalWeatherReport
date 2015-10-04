@@ -35,7 +35,10 @@ let index = React.createClass({
                   <li>Sunset: {moment(this.state.forecast.sunset).format("LT")}</li>
                 </ul>
               </div> : <div className="text-center">Getting the weather...</div>;
-    let profile = (this.state.user.name) ? <FinishProfile show={false} /> : <FinishProfile show={true} user={this.state.user} />;
+    let profile = "";
+    if (this.state.user){
+      profile = (this.state.user.name) ? <FinishProfile show={false} /> : <FinishProfile show={true} user={this.state.user} />;
+    }
     return (
         <div className="col-sm-12 text-center forecast">
           <div className="title">
