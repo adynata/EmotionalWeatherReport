@@ -12,10 +12,10 @@ let feels_tree = React.createClass({
     });
   },
   render: function(){
-    let feels_tree = (this.state.feels_tree) ? <div className="feels_tree">
+    let feels_tree = (this.state.feels_tree) ? <div className="feels-tree">
     <ul>{function(){
           for (var key in this.state.feels_tree){
-            return <li> {key} "MONKEY" </li>
+            return <li> {key} </li>
           }
         }.call(this)
       }
