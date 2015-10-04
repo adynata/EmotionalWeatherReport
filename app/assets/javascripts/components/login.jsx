@@ -81,7 +81,7 @@ export default class Login extends React.Component {
           </div>
         </div>
         <Modal.Footer>
-          <Button onClick={this.props.close}>Cancel</Button> <Button onClick={this.props.switchModal}>Sign Up</Button>
+          <Button className="pull-left" onClick={this.props.close}>Cancel</Button> <Button onClick={this.props.switchModal}>Sign Up</Button>
         </Modal.Footer>
       </Modal>);
   }

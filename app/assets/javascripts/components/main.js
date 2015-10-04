@@ -17,7 +17,11 @@ $(document).ready(function() {
 
   let index = document.getElementById('index');
   if (index) {
-    React.render(<Index />, index);
+    $.get('/forecasts', data => {
+      React.render(<Index forecast={data} />, index);
+    }).error(data=>{
+      React.render(<Index />, index);
+    });
   }
 
   let nav = document.getElementById('nav');

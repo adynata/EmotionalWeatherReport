@@ -16,12 +16,17 @@ class ForecastsController < ApplicationController
   end
 
   def index
-    @forecast = Forecast.new
-    render json: @forecast
+    if current_user
+      @forecast = Forecast.new({"zipcode" => current_user.location})
+      render json: @forecast
+    else
+      @forecast = Forecast.new
+      render json: @forecast
+    end
   end
 
   private
-  
+
   def forecast_params
     params.require(:forecast).permit(:zipcode)
   end

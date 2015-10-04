@@ -5,6 +5,10 @@ import $ from 'jquery';
 import { ButtonInput } from 'react-bootstrap';
 
 let index = React.createClass({
+  getInitialState: function(){
+    return {forecast: this.props.forecast};
+  },
+
   changeZip: function(e){
     e.preventDefault();
     $.post('/forecasts', {forecast: {zipcode: event.target.zip.value}}, data=>{
@@ -12,11 +16,13 @@ let index = React.createClass({
     });
   },
   componentWillMount: function(){
-    $.get('/forecasts', data => {
-      this.setState({
-        forecast: data
+    if(!this.props.forecast){
+      $.get('/forecasts', data => {
+        this.setState({
+          forecast: data
+        });
       });
-    });
+    }
   },
   render: function() {
     let weather = (this.state) ? <div className="actual-weather">
