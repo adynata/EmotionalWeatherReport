@@ -8,7 +8,7 @@ import Logout from './logoutModal'
 
 let nav = React.createClass({
   getInitialState: function(){
-    return {login: false, register: false, logout: false};
+    return {login: false, register: false, logout: false, finishProfile: false};
   },
 
   register: function(){
@@ -34,7 +34,8 @@ let nav = React.createClass({
     this.setState({
       login: false,
       register: false,
-      logout: false
+      logout: false,
+      finishProfile: false
     });
   },
 
@@ -45,9 +46,14 @@ let nav = React.createClass({
     });
   },
 
+  user: function(e){
+
+  },
+
   render: function(){
+    let name = (this.props.user.name) ? "Hello, " + this.props.user.name : "Account";
     let menu = (this.props.signedIn) ? <Nav navbar right>
-      <NavItem eventKey={1} onClick={this.user}>Hello, {this.props.user.name}</NavItem>
+      <NavItem eventKey={1} onClick={this.user}>{name}</NavItem>
       <NavItem eventKey={2} onClick={this.logout}>Logout</NavItem>
     </Nav> : <Nav navbar right>
       <NavItem eventKey={1} onClick={this.login}>Sign In</NavItem>

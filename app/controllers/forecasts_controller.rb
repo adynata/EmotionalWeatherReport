@@ -18,7 +18,7 @@ class ForecastsController < ApplicationController
   def index
     if current_user
       @forecast = Forecast.new({"zipcode" => current_user.location})
-      render json: @forecast
+      render json: {"forecast" => @forecast, "user" => current_user}
     else
       @forecast = Forecast.new
       render json: @forecast

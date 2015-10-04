@@ -61,7 +61,7 @@ let register = React.createClass({
           </div>
         </div>
         <Modal.Footer>
-          <Button onClick={this.props.close}>Cancel</Button> <Button onClick={this.props.switchModal}>Sign In</Button>
+          <Button className="pull-left" onClick={this.props.close}>Cancel</Button> <Button onClick={this.props.switchModal}>Sign In</Button>
         </Modal.Footer>
       </Modal>);
   }

@@ -18,7 +18,11 @@ $(document).ready(function() {
   let index = document.getElementById('index');
   if (index) {
     $.get('/forecasts', data => {
-      React.render(<Index forecast={data} />, index);
+      React.render(<Index forecast={data.forecast} user={data.user} />, index);
+      let feels_tree = document.getElementById('feels_tree');
+      if (feels_tree) {
+        React.render(<FeelsTree />, feels_tree);
+      }
     }).error(data=>{
       React.render(<Index />, index);
     });
@@ -33,14 +37,9 @@ $(document).ready(function() {
     });
   }
 
-  let feels = document.getElementById('feels');
-  if (feels) {
-    React.render(<FeelingsTree />, feels);
-  }
-
-  let feels_tree = document.getElementById('feels_tree');
-  if (feels_tree) {
-    React.render(<FeelsTree />, feels_tree);
-  }
+  // let feels = document.getElementById('feels');
+  // if (feels) {
+  //   React.render(<FeelingsTree />, feels);
+  // }
 
 });

@@ -3,12 +3,13 @@
 import React from 'react/addons';
 import $ from 'jquery';
 import { ButtonInput } from 'react-bootstrap';
+import moment from 'moment';
+import FinishProfile from './partials/finishProfile';
 
 let index = React.createClass({
   getInitialState: function(){
-    return {forecast: this.props.forecast};
+    return {forecast: this.props.forecast, user: this.props.user };
   },
-
   changeZip: function(e){
     e.preventDefault();
     $.post('/forecasts', {forecast: {zipcode: event.target.zip.value}}, data=>{
@@ -30,9 +31,11 @@ let index = React.createClass({
                   <li>Location: {this.state.forecast.location}</li>
                   <li>Current: {this.state.forecast.conditions_desc}</li>
                   <li>Temp: {this.state.forecast.current_temp}</li>
-                  <li>Sunrise: {this.state.forecast.sunrise}</li>
+                  <li>Sunrise: {moment(this.state.forecast.sunrise).format("LT")}</li>
+                  <li>Sunset: {moment(this.state.forecast.sunset).format("LT")}</li>
                 </ul>
-              </div> : <div className="text-center">Getting the weather...</div>
+              </div> : <div className="text-center">Getting the weather...</div>;
+    let profile = (this.state.user.name) ? <FinishProfile show={false} /> : <FinishProfile show={true} user={this.state.user} />;
     return (
         <div className="col-sm-12 text-center forecast">
           <div className="title">
@@ -48,8 +51,11 @@ let index = React.createClass({
               <ButtonInput type="submit" value="New Weather" />
             </form>
           </div>
+          <div id="feels_tree"></div>
           {weather}
-        </div>); }
+          {profile}
+        </div>);
+      }
 });
 
 module.exports = index;
