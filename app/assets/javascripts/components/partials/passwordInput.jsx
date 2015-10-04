@@ -6,7 +6,7 @@ import { Modal, Input, ButtonInput, Button } from 'react-bootstrap';
 
 let PasswordInput = React.createClass({
   getInitialState: function() {
-    return {value: '', help: this.props.help};
+    return {value: '', help: this.props.help, type: 'password'};
   },
   validationState: function() {
     if (this.state.value.length > 7){
@@ -30,15 +30,15 @@ let PasswordInput = React.createClass({
     let passwordId = '#' + this.props.id;
     if($(toggleId).hasClass('glyphicon-eye-open')){
       $(toggleId).removeClass("glyphicon-eye-open").addClass("glyphicon-eye-close");
-      $(passwordId).type = "text";
+      this.setState({type: 'text'});
     } else {
       $(toggleId).removeClass("glyphicon-eye-close").addClass("glyphicon-eye-open");
-      $(passwordId).type = "password";
+      this.setState({type: 'password'});
     }
   },
   render: function() {
     let vis = <Button onClick={this.toggleVis}><i id={this.props.toggle} className='glyphicon glyphicon-eye-open'></i></Button>;
-    return (<Input type="password"
+    return (<Input type={this.state.type}
             buttonBefore={vis}
             value={this.state.value}
             placeholder="Password"

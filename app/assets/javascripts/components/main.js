@@ -14,6 +14,7 @@ import FeelsTree from './log'
 
 
 $(document).ready(function() {
+
   let index = document.getElementById('index');
   if (index) {
     React.render(<Index />, index);
@@ -21,7 +22,11 @@ $(document).ready(function() {
 
   let nav = document.getElementById('nav');
   if (nav) {
-    React.render(<Navigation />, nav);
+    $.get('/signed_in').error(data => {
+      React.render(<Navigation signedIn={false} />, nav);
+    }).success(data => {
+      React.render(<Navigation signedIn={data.signed_in} user={data.user} />, nav)
+    });
   }
 
   let feels = document.getElementById('feels');

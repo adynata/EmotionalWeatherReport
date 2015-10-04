@@ -13,17 +13,18 @@ let register = React.createClass({
     e.preventDefault();
     let loc = ($('#location').val()) ? $('#location').val() : 'Oakland, CA';
     let user = {email: $('#signup-email').val(), password: $('#signup-password').val(), location: loc};
-    console.log(user);
-    // $.ajax({
-    //   method: 'POST',
-    //   url: '/users',
-    //   data: {
-    //     user: user
-    //     },
-    //   authenticity_token: this.getMetaContent("csrf-token")
-    // }).done((data) => {
-    //   console.log(data);
-    // });
+    $.ajax({
+      method: 'POST',
+      url: '/users',
+      data: {
+        user: user
+        },
+      authenticity_token: this.getMetaContent("csrf-token")
+    }).error(err => {
+      console.log(data);
+    }).success(data => {
+      console.log(data);
+    });
   },
   componentWillReceiveProps: function(nextProps){
     this.setState({

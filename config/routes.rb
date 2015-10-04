@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   root 'application#index'
+  get '/signed_in', :to => 'application#is_signed_in?'
   # get "/*path" => "application#index"
   # root 'forecasts#index'
   get '/feels/new', :to => 'feels#new'

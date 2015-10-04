@@ -11,12 +11,38 @@ export default class Login extends React.Component {
     this.state = {
       show: this.props.show
     };
+    this.getMetaContent = this.getMetaContent.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   submit(e){
     e.preventDefault();
     let user = {email: $('#login-email').val(), password: $('#login-password').val()};
-    console.log(user);
+    $.ajax({
+      method:'POST',
+      url:'/users/sign_in',
+      data: {
+        user: user
+      },
+      authenticity_token: this.getMetaContent("csrf-token")
+    }).error(err => {
+      $('.login-result').append("<div>We couldn't find that email/password combination! Please try again.</div>");
+      console.log(data);
+    }).success(data => {
+      $('.login-result').append('<div>Welcome back!</div>');
+      setTimeout(location.reload(), 2000);
+    });
+  }
+
+  getMetaContent(name){
+    let metas = $('meta').toArray();
+
+    metas.forEach((meta) => {
+      if (meta.getAttribute("name") == name) {
+        return meta.getAttribute("content");
+      }
+      return "";
+    });
   }
 
   componentWillReceiveProps(nextProps){
@@ -45,7 +71,7 @@ export default class Login extends React.Component {
       <div className="modal-body overlay-bg owl-bg sm">
         <div className="row">
           <div className="col-sm-8 col-sm-offset-2">
-            <div className="results"></div>
+            <div className="login-results"></div>
             <form id="registrationForm" onSubmit={this.submit} className="form">
               <Input type="email" id="login-email" groupClassName="group-class" labelClassName="label-class" label="Email*" hasFeedback required />
               <PasswordInput toggle="login-toggle" id="login-password" />
