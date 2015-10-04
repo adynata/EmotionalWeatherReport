@@ -51,7 +51,12 @@ let nav = React.createClass({
   },
 
   render: function(){
-    let name = (this.props.user.name) ? "Hello, " + this.props.user.name : "Account";
+    let name = "Account";
+    if(this.props.user) {
+      if (this.props.user.name){
+        name = "Hello, " + this.props.user.name;
+      }
+    }
     let menu = (this.props.signedIn) ? <Nav navbar right>
       <NavItem eventKey={1} onClick={this.user}>{name}</NavItem>
       <NavItem eventKey={2} onClick={this.logout}>Logout</NavItem>

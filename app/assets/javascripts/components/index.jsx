@@ -36,7 +36,7 @@ let index = React.createClass({
                 </ul>
               </div> : <div className="text-center">Getting the weather...</div>;
     let profile = "";
-    if (this.state.user){
+    if (this.state.user) {
       profile = (this.state.user.name) ? <FinishProfile show={false} /> : <FinishProfile show={true} user={this.state.user} />;
     }
     return (

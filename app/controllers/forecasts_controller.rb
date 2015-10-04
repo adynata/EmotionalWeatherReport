@@ -21,7 +21,7 @@ class ForecastsController < ApplicationController
       render json: {"forecast" => @forecast, "user" => current_user}
     else
       @forecast = Forecast.new
-      render json: @forecast
+      render json: {"forecast" => @forecast}
     end
   end
 
