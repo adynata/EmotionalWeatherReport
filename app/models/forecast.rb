@@ -31,7 +31,12 @@ class Forecast < ActiveRecord::Base
     if(!@zipcode)
       @zipcode = "Oakland, CA";
     end
-    forecast = OpenWeather::Current.city(@zipcode, units: 'imperial')
+    options = { units: "imperial", APPID: ENV["open_weather_id"] }
+    forecast = OpenWeather::Current.city(@zipcode, options)
+    latitude = forecast["coord"]["lat"]
+    longitude = forecast["coord"]["lon"]
+    # timezone = Timezone::Zone.new(latlon: [latitude, longitude])
+    p latitude
     self.conditions = forecast["weather"].first["main"]
     self.conditions_desc = forecast["weather"].first["description"]
     # object lookup for cond with underscores

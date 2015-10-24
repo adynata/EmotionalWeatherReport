@@ -11,7 +11,7 @@ let register = React.createClass({
   },
   submit: function(e){
     e.preventDefault();
-    let loc = ($('#location').val()) ? $('#location').val() : 'Oakland, CA';
+    let loc = ($('#location').val()) ? $('#location').val() : 'Paris, France';
     let user = {email: $('#signup-email').val(), password: $('#signup-password').val(), location: loc};
     $.ajax({
       method: 'POST',
@@ -62,6 +62,7 @@ let register = React.createClass({
         </div>
         <Modal.Footer>
           <Button className="pull-left" onClick={this.props.close}>Cancel</Button> <Button onClick={this.props.switchModal}>Sign In</Button>
+
         </Modal.Footer>
       </Modal>);
   }

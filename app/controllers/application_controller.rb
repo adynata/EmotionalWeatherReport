@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_filter :give_me_the_weather
   helper :friendships
+  helper_method :is_signed_in?
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop

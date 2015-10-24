@@ -121,4 +121,7 @@ class User < ActiveRecord::Base
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 
+  def feel_as_json_format
+  end
+
 end

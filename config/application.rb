@@ -44,5 +44,9 @@ module EWR
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
+    Timezone::Configure.begin do |c|
+      c.username = 'emotionalweatherreport'
+    end
+
   end
 end

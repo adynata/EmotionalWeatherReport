@@ -116,6 +116,8 @@ GEM
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
+    figaro (1.1.1)
+      thor (~> 0.14)
     formatador (0.2.5)
     git-version-bump (0.15.1)
     globalid (0.3.5)
@@ -342,6 +344,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    timezone (0.4.2)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -378,6 +381,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  figaro
   guard
   guard-rspec
   jbuilder (~> 2.0)
@@ -406,6 +410,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   therubyracer
+  timezone
   turbolinks
   web-console (~> 2.0)
 

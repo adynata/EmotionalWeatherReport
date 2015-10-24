@@ -19,3 +19,6 @@
 config/secrets.yml
 app/assets/javascripts/build
 node_modules
+
+# Ignore application configuration
+/config/application.yml
