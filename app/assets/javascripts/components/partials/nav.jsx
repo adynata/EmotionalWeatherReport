@@ -9,7 +9,11 @@ import UserProfile from './userProfile';
 
 let nav = React.createClass({
   getInitialState: function(){
-    return {login: false, register: false, logout: false, userProfile: false};
+    if(this.props.user.name){
+      return {login: false, register: false, logout: false, userProfile: false};
+    } else {
+      return {login: false, register: false, logout: false, userProfile: true};
+    }
   },
 
   register: function(){
@@ -31,6 +35,12 @@ let nav = React.createClass({
     });
   },
 
+  profile: function(){
+    this.setState({
+      userProfile: true
+    });
+  },
+
   close: function(){
     this.setState({
       login: false,
@@ -44,12 +54,6 @@ let nav = React.createClass({
     $.get('/logout').done(data=>{
       this.setState({logout:true});
       setTimeout(location.reload(), 2000);
-    });
-  },
-
-  profile: function(){
-    this.setState({
-      userProfile: true
     });
   },
 
