@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # root 'forecasts#index'
   get '/feels/new', :to => 'feels#new'
   get '/feels/log', :to => 'feels#log'
+  post '/users/edit', :to => 'users#edit'
 
   resources 'forecasts'
   resources 'feels'

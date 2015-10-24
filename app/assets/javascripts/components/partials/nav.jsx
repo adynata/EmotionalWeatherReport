@@ -4,11 +4,12 @@ import React from 'react/addons';
 import { Navbar, CollapsibleNav, Nav, NavItem } from 'react-bootstrap';
 import Register from '../register';
 import Login from '../login';
-import Logout from './logoutModal'
+import Logout from './logoutModal';
+import UserProfile from './userProfile';
 
 let nav = React.createClass({
   getInitialState: function(){
-    return {login: false, register: false, logout: false, finishProfile: false};
+    return {login: false, register: false, logout: false, userProfile: false};
   },
 
   register: function(){
@@ -35,7 +36,7 @@ let nav = React.createClass({
       login: false,
       register: false,
       logout: false,
-      finishProfile: false
+      userProfile: false
     });
   },
 
@@ -46,8 +47,10 @@ let nav = React.createClass({
     });
   },
 
-  user: function(e){
-
+  profile: function(){
+    this.setState({
+      userProfile: true
+    });
   },
 
   render: function(){
@@ -58,7 +61,7 @@ let nav = React.createClass({
       }
     }
     let menu = (this.props.signedIn) ? <Nav navbar right>
-      <NavItem eventKey={1} onClick={this.user}>{name}</NavItem>
+      <NavItem eventKey={1} onClick={this.profile}>{name}</NavItem>
       <NavItem eventKey={2} onClick={this.logout}>Logout</NavItem>
     </Nav> : <Nav navbar right>
       <NavItem eventKey={1} onClick={this.login}>Sign In</NavItem>
@@ -74,6 +77,7 @@ let nav = React.createClass({
       <Register show={this.state.register} close={this.close} switchModal={this.switchModal} />
       <Login show={this.state.login} close={this.close} switchModal={this.switchModal} />
       <Logout show={this.state.logout} close={this.close} />
+      <UserProfile show={this.state.userProfile} user={this.props.user} close={this.close} />
     </div>
     );
   }
