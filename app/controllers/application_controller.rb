@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
     @forecast = Forecast.new
   end
 
+  # def feeling_colors
+  #   render json: Feel.colorize
+  # end
+
   def is_signed_in?
     if user_signed_in?
       render json: {"signed_in" => true, "user" => current_user}
