@@ -17,9 +17,11 @@ Rails.application.routes.draw do
   # root 'forecasts#index'
   get '/feels/new', :to => 'feels#new'
   get '/feels/log', :to => 'feels#log'
+  post '/users/edit', :to => 'users#update'
 
   resources 'forecasts'
   resources 'feels'
+  resources 'users'
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -4,6 +4,7 @@ import React from 'react/addons';
 import $ from 'jquery';
 import { Modal, Input, ButtonInput, Button } from 'react-bootstrap';
 import PasswordInput from './partials/passwordInput';
+import Functions from './helpers/functions';
 
 let register = React.createClass({
   getInitialState: function() {
@@ -19,9 +20,9 @@ let register = React.createClass({
       data: {
         user: user
         },
-      authenticity_token: this.getMetaContent("csrf-token")
+      authenticity_token: Functions.getMetaContent("csrf-token")
     }).error(err => {
-      console.log(data);
+      console.log(err);
     }).success(data => {
       console.log(data);
     });
@@ -29,16 +30,6 @@ let register = React.createClass({
   componentWillReceiveProps: function(nextProps){
     this.setState({
       show: nextProps.show > this.props.show
-    });
-  },
-  getMetaContent: function(name){
-    let metas = $('meta').toArray();
-
-    metas.forEach((meta) => {
-      if (meta.getAttribute("name") == name) {
-        return meta.getAttribute("content");
-      }
-      return "";
     });
   },
   render: function(){

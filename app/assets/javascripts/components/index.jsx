@@ -4,7 +4,6 @@ import React from 'react/addons';
 import $ from 'jquery';
 import { ButtonInput } from 'react-bootstrap';
 import moment from 'moment';
-import FinishProfile from './partials/finishProfile';
 
 let index = React.createClass({
   getInitialState: function(){
@@ -35,10 +34,6 @@ let index = React.createClass({
                   <li>Sunset: {moment(this.state.forecast.sunset).format("LT")}</li>
                 </ul>
               </div> : <div className="text-center">Getting the weather...</div>;
-    let profile = "";
-    if (this.state.user) {
-      profile = (this.state.user.name) ? <FinishProfile show={false} /> : <FinishProfile show={true} user={this.state.user} />;
-    }
     return (
         <div className="col-sm-12 text-center forecast">
           <div className="title">
@@ -56,9 +51,9 @@ let index = React.createClass({
           </div>
           <div id="feels_tree"></div>
           {weather}
-          {profile}
-        </div>);
-      }
+        </div>
+      );
+    }
 });
 
 module.exports = index;

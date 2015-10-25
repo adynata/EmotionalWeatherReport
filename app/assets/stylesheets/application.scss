@@ -39,7 +39,9 @@ $color-dark:#111;
 // Styles
 body, html {
 	font-family: $font-body;
-	color:$color-white;
+	color: $color-white;
+  padding:0;
+  margin:0;
 }
 h1,h2,h3,h4,h5{
 	font-family: $font-header;
@@ -67,6 +69,38 @@ h5{}
 
 ul{list-style:none;}
 
+//Helpers
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+
+//Loaders
+/* Spinner Circle Rotation */
+/* credit to Harold Soto: http://codepen.io/bernethe/pen/dorozd */
+.sp-circle {
+  width: 32px;
+  height: 32px;
+  clear: both;
+  margin: 20px 0px;
+  border: 4px rgba($primary-color,0.25) solid;
+  border-top: 4px rgba($primary-color,1) solid;
+  border-radius: 50%;
+  -webkit-animation: spCircRot .8s infinite linear;
+  animation: spCircRot .8s infinite linear;
+}
+@-webkit-keyframes spCircRot {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(359deg); }
+}
+@keyframes spCircRot {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}
+
+//Backgrounds
 .overlay-bg {
 	background-size: cover;
 	padding: 20px;
@@ -95,6 +129,11 @@ ul{list-style:none;}
   &.sm {
     background-image: url('http://placeowl.com/200/300');
   }
+}
+
+//Forms
+.result {
+  color:$color-dark;
 }
 
 .row {
