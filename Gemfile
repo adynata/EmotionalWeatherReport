@@ -82,7 +82,7 @@ group :development, :test do
   gem 'shoulda-matchers' # https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-callback-matchers', '~> 1.0'
   gem 'spring-commands-rspec'
-  gem 'mailcatcher'
+  # gem 'mailcatcher'
   gem 'did_you_mean'
 end
 
