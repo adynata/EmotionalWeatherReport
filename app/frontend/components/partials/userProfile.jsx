@@ -1,12 +1,13 @@
 'use strict';
 
-import React from 'react/addons';
 import $ from 'jquery';
+import React from 'react';
+import LinkedStateMixin from 'react-addons-linked-state-mixin';
 import { Modal, Input, ButtonInput, Button } from 'react-bootstrap';
 import Functions from '../helpers/functions';
 
 let UserProfile = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
+  mixins: [LinkedStateMixin],
   getInitialState: function(){
    return {
      show: this.props.show,

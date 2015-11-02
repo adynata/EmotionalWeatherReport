@@ -1,7 +1,7 @@
 'use strict'
 
-import React from 'react/addons';
-import { Navbar, CollapsibleNav, Nav, NavItem } from 'react-bootstrap';
+import React from 'react';
+import { Navbar, CollapsibleNav, Nav, NavItem, NavBrand } from 'react-bootstrap';
 import Register from '../register';
 import Login from '../login';
 import Logout from './logoutModal';
@@ -73,7 +73,8 @@ let nav = React.createClass({
     </Nav>;
     return (
     <div className="row">
-      <Navbar brand="Emotional Weather Report">
+      <Navbar>
+        <NavBrand><a href="/">Emotional Weather Report</a></NavBrand>
         <CollapsibleNav eventKey={0}>
           {menu}
         </CollapsibleNav>

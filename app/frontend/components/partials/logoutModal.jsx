@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react/addons';
+import React from 'react';
 import $ from 'jquery';
 import { Modal, Input, ButtonInput, Button } from 'react-bootstrap';
 

@@ -2,11 +2,12 @@
 
 // expose jQuery for jquery_ujs and React for react_ujs
 require('expose?jQuery!expose?$!jquery');
-require('expose?React!react/addons');
+require('expose?React!react');
 require('expose?ReactBootstrap!react-bootstrap');
 
 import $      from 'jquery';
-import React  from 'react/addons';
+import React  from 'react';
+import ReactDOM from 'react-dom';
 import Index   from './index';
 import Navigation from './partials/nav';
 import Register from './register';
@@ -18,22 +19,22 @@ $(document).ready(function() {
   let index = document.getElementById('index');
   if (index) {
     $.get('/forecasts', data => {
-      React.render(<Index forecast={data.forecast} user={data.user} />, index);
+      ReactDOM.render(<Index forecast={data.forecast} user={data.user} />, index);
       let feels_tree = document.getElementById('feels_tree');
       if (feels_tree) {
-        React.render(<FeelsTree />, feels_tree);
+        ReactDOM.render(<FeelsTree />, feels_tree);
       }
     }).error(data=>{
-      React.render(<Index />, index);
+      ReactDOM.render(<Index />, index);
     });
   }
 
   let nav = document.getElementById('nav');
   if (nav) {
     $.get('/signed_in').error(data => {
-      React.render(<Navigation signedIn={false} />, nav);
+      ReactDOM.render(<Navigation signedIn={false} />, nav);
     }).success(data => {
-      React.render(<Navigation signedIn={data.signed_in} user={data.user} />, nav)
+      ReactDOM.render(<Navigation signedIn={data.signed_in} user={data.user} />, nav)
     });
   }
 

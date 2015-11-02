@@ -1,6 +1,6 @@
 {
   "webpack": {
-    "path": "./app/assets/javascripts/components/",
+    "path": "./app/frontend/components/",
     "test": "./__tests__/**/*-test.js",
     "build": "./app/assets/javascripts/build"
   }

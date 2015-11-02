@@ -16,4 +16,3 @@
 //= require react_ujs
 //= require bootstrap
 //= require turbolinks
-//= require components
